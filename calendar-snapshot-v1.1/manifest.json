@@ -1,0 +1,30 @@
+{
+  "name": "Calendar Snapshot",
+  "version": "1.1",
+  "description": "Create calendar events from a screenshot",
+  "manifest_version": 3,
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": false
+  },
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+  "action": {
+        "default_popup": "html/tooltip.html"
+    },
+    "content_scripts": [{"matches":["<all_urls>"], "js":["js/background.js"], "run_at":"document_end"}],
+  "web_accessible_resources": [{
+    "resources": ["libraries/worker.min.js",
+    "libraries/tessearct-core.wasm.js",
+    "traineddata/*.traineddata.gz","js/main.js","libraries/tesseract.min.js", "libraries/html2canvas.min.js"],
+    "matches": ["<all_urls>"]
+  }]
+}
